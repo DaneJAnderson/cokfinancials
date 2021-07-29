@@ -14,3 +14,15 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.nav-item.dropdown:hover .dropdown-menu {
+  display: block;
+ margin-top: -5px;
+}
+
+
+.dropdown-menu .active, .dropdown-menu .dropdown-item.active, .dropdown-item:active
+{
+
+  background-color: rgb(214, 167, 65) !important;
+}
