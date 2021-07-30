@@ -15,14 +15,39 @@ a {
   box-sizing: border-box;
 }
 
-.nav-item.dropdown:hover .dropdown-menu {
-  display: block;
- margin-top: -5px;
+
+.dropdown-item:hover
+{
+  color: rgb(130, 0, 252) !important;
 }
 
-
+/* Active BG */
 .dropdown-menu .active, .dropdown-menu .dropdown-item.active, .dropdown-item:active
 {
 
-  background-color: rgb(214, 167, 65) !important;
+  background-color: rgb(248, 240, 255) !important;
+  color: rgb(130, 0, 252) !important;
+}
+
+.navbar-light .navbar-nav .nav-link, .navbar-light .navbar-nav .nav-link
+{
+  color: rgb(0, 0, 0) !important;
+}
+
+/* Nav Button Hover */
+.navbar-light .navbar-nav .nav-link:focus, .navbar-light .navbar-nav .nav-link:hover {
+  color: rgb(130, 0, 252) !important;
+}
+
+
+@media screen and (min-width: 768px) {
+
+  .nav-item.dropdown:hover .dropdown-menu 
+  {
+  display: block;
+  margin-top: -5px;
+  color: rgb(230, 194, 140);
+  }
+  
+  
 }

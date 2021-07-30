@@ -5,66 +5,51 @@ import {Container, Nav, NavDropdown} from 'react-bootstrap';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-
 const Header = () => {
-  const router = useRouter()
-
-  const headerRoute = (route) => {
-    // e.preventDefault();
-    // router.push(e.target.value);
-    router.push(route);
-   
-  }
-
- 
-  return (
- 
-<Navbar bg="light" expand="md" sticky="top" >
-  <Container className="Red" style={{marginTop: '-10px'}}>
+    const router = useRouter()
+    const headerRoute = (e,route) => {      
+      e.preventDefault();
+      // router.push(e.target.value);
+      router.push(route);   
+    }
+  const base = 'Promotions/';
+    return ( 
+  <Navbar collapseOnSelect bg="light" expand="md" sticky="top" >
+    <Container className="Red" style={{marginTop: '-10px'}}>
 
       <Navbar.Brand href="/" >
-  {/* <Link href="/" > */}
-     {/* <a > */}
-        <img src="/images/COK_Sodality_Logo.png" width="180px" />
-         {/* </a>      */}
-  {/* </Link> */}
+          <img src="/images/COK_Sodality_Logo.png" width="180px" /> 
       </Navbar.Brand>
       <span style={{flexGrow: 20}}></span>
-    <Navbar.Toggle aria-controls="basic-navbar-nav" />
-    <Navbar.Collapse id="basic-navbar-nav">
-      <Nav className="me-auto">
-        <Nav.Link onClick={()=>headerRoute("/")}>
-        
-      {/* <Link href="/" > */}
-        {/* <a className=" text-decoration-none"> */}
-          HOME
-          {/* </a>  */}
-      {/* </Link> */}
-          </Nav.Link>
-        
-        <NavDropdown title="PROMOTIONS" id="basic-nav-dropdown" renderMenuOnMount={true}>
-          <NavDropdown.Item href="#action/3.1" >Auto Loan</NavDropdown.Item>  
-          <NavDropdown.Divider />       
-          <NavDropdown.Item href="#action/3.2">Loan for Home</NavDropdown.Item>
-          <NavDropdown.Divider />      
-          <NavDropdown.Item href="#action/3.3">Home Equity Loans</NavDropdown.Item>
-          <NavDropdown.Divider />      
-          <NavDropdown.Item href="#action/3.4">Mortgage</NavDropdown.Item>
-          <NavDropdown.Divider />      
-          <NavDropdown.Item href="#action/3.5">Mortgage Refinance</NavDropdown.Item>
-          <NavDropdown.Divider />      
-          <NavDropdown.Item href="#action/3.6">Unsecured Loan</NavDropdown.Item>
-          <NavDropdown.Divider />      
-          <NavDropdown.Item href="#action/3.7">Home Equity Loans</NavDropdown.Item>
-        </NavDropdown>
-      </Nav>
-    </Navbar.Collapse>
-  </Container>
-</Navbar>
 
-  );
+      <Navbar.Toggle aria-controls="basic-navbar-nav" />
+      <Navbar.Collapse id="basic-navbar-nav">
+        <Nav className="me-auto">
+          <Nav.Link href="https://cokcu.com" > 
+            HOME          
+            </Nav.Link>
+          
+          <NavDropdown title="PROMOTIONS" id="basic-nav-dropdown" renderMenuOnMount={true}>
+            <NavDropdown.Item onClick={(e)=>headerRoute(e, base+"auto-loan")}  href="auto-loan">Auto Loan</NavDropdown.Item>  
+            <NavDropdown.Divider />       
+            <NavDropdown.Item href="#action/3.2">Loan for Home</NavDropdown.Item>
+            <NavDropdown.Divider />      
+            <NavDropdown.Item href="#action/3.3">Home Equity Loans</NavDropdown.Item>
+            <NavDropdown.Divider />      
+            <NavDropdown.Item href="#action/3.4">Mortgage</NavDropdown.Item>
+            <NavDropdown.Divider />      
+            <NavDropdown.Item href="#action/3.5">Mortgage Refinance</NavDropdown.Item>
+            <NavDropdown.Divider />      
+            <NavDropdown.Item href="#action/3.6">Unsecured Loan</NavDropdown.Item>
+            <NavDropdown.Divider />      
+            <NavDropdown.Item href="#action/3.7">Home Equity Loans</NavDropdown.Item>
+          </NavDropdown>
+        </Nav>
+      </Navbar.Collapse>
+    </Container>
+  </Navbar>
+    );
 }
-
 export default Header;
 
 
