@@ -1,0 +1,20 @@
+.Forms {
+    background: white !important;
+    padding-bottom: 0px;
+}
+
+.btnColor {
+    background-image: linear-gradient(to right top, #FF9900, #EB6123, #F9A602);
+    padding-left: 30px !important;
+    padding-right: 30px !important;
+}
+
+.SelectWidth {
+    min-width: 100% !important;
+}
+
+@media screen and (max-width: 768px) {
+
+  
+    
+}

@@ -13,6 +13,7 @@ const Header = () => {
       router.push(route);   
     }
   const base = 'Promotions/';
+  // const base = '';
     return ( 
   <Navbar collapseOnSelect bg="light" expand="md" sticky="top" >
     <Container className="Red" style={{marginTop: '-10px'}}>
@@ -23,26 +24,26 @@ const Header = () => {
       <span style={{flexGrow: 20}}></span>
 
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="me-auto">
+      <Navbar.Collapse id="basic-navbar-nav" > 
+        <Nav className="me-auto ">
           <Nav.Link href="https://cokcu.com" > 
             HOME          
             </Nav.Link>
           
-          <NavDropdown title="PROMOTIONS" id="basic-nav-dropdown" renderMenuOnMount={true}>
-            <NavDropdown.Item onClick={(e)=>headerRoute(e, base+"auto-loan")}  href="auto-loan">Auto Loan</NavDropdown.Item>  
+          <NavDropdown title="PROMOTIONS" id="basic-nav-dropdown" renderMenuOnMount={true} >
+            <NavDropdown.Item onClick={(e)=>headerRoute(e, "auto-loan")}  href={"auto-loan"}>Auto Loan</NavDropdown.Item>  
             <NavDropdown.Divider />       
-            <NavDropdown.Item href="#action/3.2">Loan for Home</NavDropdown.Item>
+            <NavDropdown.Item onClick={(e)=>headerRoute(e, "loan-for-home")}  href="loan-for-home">Loan for Home</NavDropdown.Item>
             <NavDropdown.Divider />      
-            <NavDropdown.Item href="#action/3.3">Home Equity Loans</NavDropdown.Item>
+            <NavDropdown.Item onClick={(e)=>headerRoute(e, "home-equity-loan")}  href="home-equity-loan">Home Equity Loan</NavDropdown.Item>
             <NavDropdown.Divider />      
-            <NavDropdown.Item href="#action/3.4">Mortgage</NavDropdown.Item>
+            <NavDropdown.Item onClick={(e)=>headerRoute(e, "mortgage")}  href="mortgage">Mortgage</NavDropdown.Item>
             <NavDropdown.Divider />      
-            <NavDropdown.Item href="#action/3.5">Mortgage Refinance</NavDropdown.Item>
+            <NavDropdown.Item onClick={(e)=>headerRoute(e, "mortgage-refinance")}  href="mortgage-refinance">Mortgage Refinance</NavDropdown.Item>
             <NavDropdown.Divider />      
-            <NavDropdown.Item href="#action/3.6">Unsecured Loan</NavDropdown.Item>
+            <NavDropdown.Item onClick={(e)=>headerRoute(e, "unsecure-loan")}  href="unsecure-loan">Unsecured Loan</NavDropdown.Item>
             <NavDropdown.Divider />      
-            <NavDropdown.Item href="#action/3.7">Home Equity Loans</NavDropdown.Item>
+            <NavDropdown.Item onClick={(e)=>headerRoute(e, "deferred-shares")}  href="deferred-shares">Deferred Shares</NavDropdown.Item>
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>
