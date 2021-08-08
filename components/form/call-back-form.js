@@ -6,8 +6,10 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import InputAdornment from '@material-ui/core/InputAdornment';
 import Snackbar from '../snackbar';
-import {Forms,SelectWidth, btnColor} from './form.module.css'
+import {Forms,SelectWidth, btnColor} from './form.module.css';
 import MenuItem from '@material-ui/core/MenuItem';
+import Phone from './phone-field';
+import LoanAmount from './loan-field';
 
 
 
@@ -42,14 +44,18 @@ componentDidMount() {
    this.postData();
   
   this.setState({     
-    counter:'',
-    new_member_name:'',
-    new_member_acc:'',
-    referrer_name:'', 
-    branch:'',
-    auth:0,
-    snacker:false,
-    snackbarShow:'',
+      counter:'',
+      fname:'',
+      lname:'',
+      loan_amount:'',
+      email:'',
+      phone:'',
+      parish:'',
+      auth:0,
+      empl_status: '',
+      place_of_empl:'',
+      snacker:false,
+      snackbarShow:'',
     } );    
   }
 
@@ -153,8 +159,8 @@ postData = ()=>{
           id=""
           label="Email"
           variant="outlined" 
-          onChange={(e) => this.setState({new_member_name: e.target.value})}          
-          value={this.state.new_member_name}
+          onChange={(e) => this.setState({email: e.target.value})}          
+          value={this.state.email}
           type="email"
           inputProps={{ pattern:"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"}}
           required
@@ -164,19 +170,24 @@ postData = ()=>{
        
          {/* ---------------- Phone # -----------------*/}
 
-        <TextField fullWidth 
+     {/*    <TextField fullWidth 
           error={isNaN(this.state.phone)}
           id=""
+          type="number"
           label="Telephone #"         
           helperText={helperPhone}
           variant="outlined"       
           onChange={(e) => this.setState({phone: e.target.value})}          
           value={this.state.phone}
+          inputProps={{minlength:10}}
+          
           required
           
-        />
+        /> */}
 
-        <br/><br/>
+        <Phone />
+
+        <br/>
 
            {/* -------------------------------- Place of Employment -------------------------- */}
 
@@ -235,7 +246,7 @@ postData = ()=>{
 
          {/* -------------------- Loan Amount being Barrowed ------------ */}
 
-       <TextField fullWidth 
+       {/* <TextField fullWidth 
           error={isNaN(this.state.loan_amount)}
           id=""
           label="Loan Amount"     
@@ -248,7 +259,11 @@ postData = ()=>{
             startAdornment: <InputAdornment position="start">$</InputAdornment>,
           }}
           required
-        />
+        /> */}
+        
+        <LoanAmount />
+        
+        
 
         {/* ----------------------------------------------- */}
 
