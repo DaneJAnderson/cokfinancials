@@ -31,7 +31,7 @@ NumberFormatCustom.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-export default function LoanAmount() {
+export default function LoanAmount({Onchange}) {
 
   const [values, setValues] = React.useState({  
     numberformat: '',
@@ -42,6 +42,7 @@ export default function LoanAmount() {
       ...values,
       [event.target.name]: event.target.value,
     });
+    Onchange(event.target.value);
   };
 
   return (    

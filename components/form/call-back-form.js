@@ -1,20 +1,19 @@
-import React,{ createRef,Component } from 'react';
+import React,{ Component } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
-import InputAdornment from '@material-ui/core/InputAdornment';
+// import InputAdornment from '@material-ui/core/InputAdornment';
 import Snackbar from '../snackbar';
 import {Forms,SelectWidth, btnColor} from './form.module.css';
 import MenuItem from '@material-ui/core/MenuItem';
 import Phone from './phone-field';
 import LoanAmount from './loan-field';
-
+import LoanLabel from '../loan-label';
 
 
 class CallBack extends Component {
-
     state = {     
       counter:'',
       fname:'',
@@ -28,20 +27,18 @@ class CallBack extends Component {
       place_of_empl:'',
       snacker:false,
       snackbarShow:'',
-      
-    } 
-    
+      showForm:true,      
+    }     
 
 componentDidMount() { 
+   this.handleSubmit = this.handleSubmit.bind(this);      
+}   
 
-   this.handleSubmit = this.handleSubmit.bind(this);   
-   
-  }   
+handleSubmit(event) {
 
- handleSubmit(event) {
-    
-   event.preventDefault();
-   this.postData();
+  console.log(this.state.phone);    
+  event.preventDefault();
+  this.postData();
   
   this.setState({     
       counter:'',
@@ -56,6 +53,7 @@ componentDidMount() {
       place_of_empl:'',
       snacker:false,
       snackbarShow:'',
+      showForm:true,  
     } );    
   }
 
@@ -83,10 +81,19 @@ postData = ()=>{
                    console.log('Post data Error', error)
      })
   }
+  scrolling() {
 
+    setTimeout( () => {
+    window.scrollBy({
+      top: 500, 
+      left: 0, 
+      behavior: 'smooth' 
+     });
+
+    },3);
+  }
   
-    render() {
-      
+    render() {      
       
       const {classes} = this.props;
       let helperLoan_amount = '';
@@ -96,9 +103,12 @@ postData = ()=>{
      if( isNaN(this.state.phone)){ helperPhone = 'Incorrect entry, number required'}
 
       return (  
-        
+      <>
+        <LoanLabel forms={(show)=>{this.setState({showForm: !this.state.showForm});this.scrolling()}} />
 
-      <div style={{flexGrow:1}} className="pt-5 bg-light" >    {/*className={classes.root }*/}
+        { this.state.showForm ?'': 
+
+      <div style={{flexGrow:1}} className="bg-light" >    {/*className={classes.root }*/}
         
       <Grid container  alignItems="center" justifyContent="center" > 
 
@@ -108,22 +118,19 @@ postData = ()=>{
           <CardContent className={Forms} >
 
           <div className="text-center">
-            <b className="fs-6 text-uppercase" style={{color: 'black'}}>
+            <b className="fs-6 text-uppercase" style={{color: 'black', fontFamily: '"Times New Roman", Times, serif'}}>
               Complete the form below to be contacted <br/>
               </b>
 
           <h2 className="pt-3 pb-3 fw-bolder font">Sign up</h2>               
           </div><br/>
 
-
-
       <Grid container alignItems="center" justifyContent="center" > 
       <Grid container item xs={12} md={8} lg={7} className="" justifyContent="center">
 
           <form style={{flexGrow:'1',maxWidth:'800px'}}  onSubmit={this.handleSubmit}  autoComplete="off"> {/*noValidate className={classes.root }*/}
 
-       {/* --------------------------- Referrer's Name ------------------- */}
-       
+       {/* --------------------------- Referrer's Name ------------------- */}       
         
        <TextField fullWidth 
           error={false}
@@ -134,9 +141,7 @@ postData = ()=>{
           value={this.state.fname}
           required
         />
-
         <br/><br/>
-
         
       {/* -------------------------------- Last Name -------------------------- */}
 
@@ -150,7 +155,6 @@ postData = ()=>{
           required
           variant="outlined"    
         /><br/><br/>
-
       
         {/* --------------------------- Email ------------------- */}
        
@@ -165,27 +169,11 @@ postData = ()=>{
           inputProps={{ pattern:"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"}}
           required
         />
-        <br/><br/>
-                
+        <br/><br/>                
        
          {/* ---------------- Phone # -----------------*/}
 
-     {/*    <TextField fullWidth 
-          error={isNaN(this.state.phone)}
-          id=""
-          type="number"
-          label="Telephone #"         
-          helperText={helperPhone}
-          variant="outlined"       
-          onChange={(e) => this.setState({phone: e.target.value})}          
-          value={this.state.phone}
-          inputProps={{minlength:10}}
-          
-          required
-          
-        /> */}
-
-        <Phone />
+        <Phone Onchange={ (num)=>this.setState({phone: num}) } />
 
         <br/>
 
@@ -200,8 +188,7 @@ postData = ()=>{
           value={this.state.place_of_empl}
           required
           variant="outlined"    
-        /><br/><br/>
-          
+        /><br/><br/>          
 
         {/* ----------------- Parish/Location ---------------------- */}
         <TextField
@@ -222,7 +209,6 @@ postData = ()=>{
             </MenuItem>
           ))}
         </TextField> <br/><br/>
-
 
         {/* ----------------- Employment Status ---------------------- */}
         <TextField
@@ -245,37 +231,20 @@ postData = ()=>{
         </TextField><br/><br/>
 
          {/* -------------------- Loan Amount being Barrowed ------------ */}
-
-       {/* <TextField fullWidth 
-          error={isNaN(this.state.loan_amount)}
-          id=""
-          label="Loan Amount"     
-          helperText={helperLoan_amount}
-          type="number"
-          variant="outlined"   
-          onChange={(e) => this.setState({loan_amount: e.target.value})}          
-          value={this.state.loan_amount}
-          InputProps={{
-            startAdornment: <InputAdornment position="start">$</InputAdornment>,
-          }}
-          required
-        /> */}
         
-        <LoanAmount />
-        
+        <LoanAmount Onchange={(amt)=>this.setState({loan_amount:amt})}/>        
         
 
         {/* ----------------------------------------------- */}
 
         <br/><br/><br/>
      <div className="d-flex justify-content-center">
-     <Button size="large" type="submit" className={" text-white "+btnColor}>Submit</Button> {/*onClick={this.postData} */}
+     <Button size="large" type="submit" className={"p-2 text-white "+btnColor}>Submit</Button> {/*onClick={this.postData} */}
      </div>
     </form>
     </Grid></Grid>
 
     <h1>{this.state.customer_name}</h1>
-
   
           </CardContent>
     </Card>
@@ -285,8 +254,8 @@ postData = ()=>{
 
 {this.state.snackbarShow}
           
-        </div>
-       
+        </div>}
+       </>
       );
     }
   }  

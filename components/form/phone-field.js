@@ -35,7 +35,7 @@ NumberFormatCustom.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-export default function Phone() {
+export default function Phone({Onchange}) {
 
   const [values, setValues] = React.useState({
  
@@ -47,6 +47,8 @@ export default function Phone() {
       ...values,
       [event.target.name]: event.target.value,
     });
+    // Onchange(values.numberformat);
+    Onchange(event.target.value);
   };
 
   return (

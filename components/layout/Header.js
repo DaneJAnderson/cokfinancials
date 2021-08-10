@@ -6,12 +6,14 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 const Header = () => {
-    const router = useRouter()
+    const router = useRouter();
+
     const headerRoute = (e,route) => {      
       e.preventDefault();
       // router.push(e.target.value);
       router.push(route);   
     }
+    
   const base = 'Promotions/';
   // const base = '';
     return ( 
