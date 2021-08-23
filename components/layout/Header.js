@@ -17,8 +17,8 @@ const Header = () => {
   const base = 'Promotions/';
   // const base = '';
     return ( 
-  <Navbar collapseOnSelect bg="light" expand="md" sticky="top" >
-    <Container className="Red" style={{marginTop: '-10px'}}>
+  <Navbar collapseOnSelect bg="light" expand="md" sticky="top">
+    <Container className="Red" style={{marginTop: '-10px', marginBottom:'-7px'}}>
 
       <Navbar.Brand href="/" >
           <img src="/images/COK_Sodality_Logo.png" width="180px" /> 

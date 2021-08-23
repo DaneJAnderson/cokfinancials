@@ -4,8 +4,9 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-    overflow-x: hidden;
+    overflow: inherit !important;       
     padding-right: 0px !important;
+    padding-left: 0px !important;
     scroll-behavior: smooth;
  
    
@@ -72,6 +73,7 @@ a {
   
   .imgHeight {
     height: 90vh;
+    max-width: 1600px;
   }
 
 
@@ -114,4 +116,14 @@ label.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLab
 
 .MuiSelect-select:focus {
   background-color: #fff !important;
+}
+
+/* Change the white to any color */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active
+{
+ -webkit-box-shadow: 0 0 0 30px white inset !important;
+  box-shadow: 0 0 0 30px white inset !important;
 }

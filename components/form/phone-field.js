@@ -1,8 +1,10 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import NumberFormat from 'react-number-format';
 import TextField from '@material-ui/core/TextField';
+import { useState } from 'react';
 
+
+// Internal Use Function
 function NumberFormatCustom(props) {
   const { inputRef, onChange, ...other } = props;
  
@@ -35,11 +37,11 @@ NumberFormatCustom.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-export default function Phone({Onchange}) {
+export default function Phone({Onchange, Phone}) {
 
-  const [values, setValues] = React.useState({
+  const [values, setValues] = useState({
  
-    numberformat: '',
+    numberformat: Phone,
   });
 
   const handleChange = (event) => {

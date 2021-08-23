@@ -1,4 +1,4 @@
-import React,{ Component } from 'react';
+import { Component } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -13,7 +13,8 @@ import LoanAmount from './loan-field';
 import LoanLabel from '../loan-label';
 
 
-class CallBack extends Component {
+class CallBackForm extends Component {
+  
     state = {     
       counter:'',
       fname:'',
@@ -27,7 +28,8 @@ class CallBack extends Component {
       place_of_empl:'',
       snacker:false,
       snackbarShow:'',
-      showForm:true,      
+      showForm:false,      
+      promo_name: this.props.promo_name,
     }     
 
 componentDidMount() { 
@@ -53,12 +55,11 @@ handleSubmit(event) {
       place_of_empl:'',
       snacker:false,
       snackbarShow:'',
-      showForm:true,  
+      showForm:false,  
     } );    
   }
 
 //  ------------------ Post Data ------------------- //
-
 postData = ()=>{  
 
     axios.post('http://'+host+'/member-referral/public/api/post-referrer', data)                               
@@ -82,15 +83,30 @@ postData = ()=>{
      })
   }
   scrolling() {
+    if(!this.state.showForm){
 
+    window.scrollTo(0,0);
     setTimeout( () => {
+
+      if(screen.width <= 768){
+
+        window.scrollBy({
+          top: 320, 
+          left: 0, 
+          behavior: 'smooth' 
+         });  
+
+      }else
+
     window.scrollBy({
-      top: 500, 
+      top: 770, 
       left: 0, 
       behavior: 'smooth' 
      });
 
-    },3);
+    },100);
+
+  }
   }
   
     render() {      
@@ -103,12 +119,12 @@ postData = ()=>{
      if( isNaN(this.state.phone)){ helperPhone = 'Incorrect entry, number required'}
 
       return (  
-      <>
-        <LoanLabel forms={(show)=>{this.setState({showForm: !this.state.showForm});this.scrolling()}} />
+      <>        
+        <LoanLabel forms={()=>{this.setState({showForm: !this.state.showForm});this.scrolling()}} /> 
 
-        { this.state.showForm ?'': 
+        { this.state.showForm &&
 
-      <div style={{flexGrow:1}} className="bg-light" >    {/*className={classes.root }*/}
+      <div style={{flexGrow:1}} className="bg-light" >   
         
       <Grid container  alignItems="center" justifyContent="center" > 
 
@@ -128,8 +144,7 @@ postData = ()=>{
       <Grid container alignItems="center" justifyContent="center" > 
       <Grid container item xs={12} md={8} lg={7} className="" justifyContent="center">
 
-          <form style={{flexGrow:'1',maxWidth:'800px'}}  onSubmit={this.handleSubmit}  autoComplete="off"> {/*noValidate className={classes.root }*/}
-
+          <form style={{flexGrow:'1',maxWidth:'800px'}}  onSubmit={this.handleSubmit}  autoComplete="off"> 
        {/* --------------------------- Referrer's Name ------------------- */}       
         
        <TextField fullWidth 
@@ -173,7 +188,7 @@ postData = ()=>{
        
          {/* ---------------- Phone # -----------------*/}
 
-        <Phone Onchange={ (num)=>this.setState({phone: num}) } />
+        <Phone Phone={this.state.phone} Onchange={ (num)=>this.setState({phone: num}) } />
 
         <br/>
 
@@ -232,7 +247,7 @@ postData = ()=>{
 
          {/* -------------------- Loan Amount being Barrowed ------------ */}
         
-        <LoanAmount Onchange={(amt)=>this.setState({loan_amount:amt})}/>        
+        <LoanAmount Loan={this.state.loan_amount} Onchange={(amt)=>this.setState({loan_amount:amt})}/>        
         
 
         {/* ----------------------------------------------- */}
@@ -335,4 +350,4 @@ postData = ()=>{
    
   ];
 
- export default CallBack;
+ export default CallBackForm;
