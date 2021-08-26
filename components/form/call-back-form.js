@@ -11,25 +11,27 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Phone from './phone-field';
 import LoanAmount from './loan-field';
 import LoanLabel from '../loan-label';
+import axios from 'axios';
 
 
 class CallBackForm extends Component {
   
     state = {     
       counter:'',
-      fname:'',
-      lname:'',
+      first_name:'',
+      last_name:'',
       loan_amount:'',
       email:'',
-      phone:'',
+      telephone_number:'',
       parish:'',
       auth:0,
-      empl_status: '',
-      place_of_empl:'',
+      employment_status: '',
+      place_of_employment:'',
       snacker:false,
       snackbarShow:'',
       showForm:false,      
-      promo_name: this.props.promo_name,
+      promotion_name: this.props.promo_name,
+      promotion_id: this.props.promo_id,
     }     
 
 componentDidMount() { 
@@ -38,44 +40,50 @@ componentDidMount() {
 
 handleSubmit(event) {
 
-  console.log(this.state.phone);    
+  // console.log(this.state.telephone_number);    
   event.preventDefault();
   this.postData();
   
   this.setState({     
       counter:'',
-      fname:'',
-      lname:'',
+      first_name:'',
+      last_name:'',
       loan_amount:'',
       email:'',
-      phone:'',
+      telephone_number:'',
       parish:'',
       auth:0,
-      empl_status: '',
-      place_of_empl:'',
+      employment_status: '',
+      place_of_employment:'',
       snacker:false,
       snackbarShow:'',
-      showForm:false,  
+      // showForm:false,  
+      promotion_name: this.props.promo_name,
+      promotion_id: this.props.promo_id,   
+      
     } );    
   }
 
 //  ------------------ Post Data ------------------- //
 postData = ()=>{  
 
-    axios.post('http://'+host+'/member-referral/public/api/post-referrer', data)                               
+  const host = window.location.hostname;
+
+    // axios.post('http://'+host+'/APIv1/create.php', this.state)                               
+    axios.post('http://'+host+'/next/cokfinancial/APIv1/create.php', this.state)                               
     .then(response => {         
      
         if(response.data.status === 1)
         {           
-          // console.log(response.data);
+          console.log(response.data);
 
           this.setState({snacker:true});
 
-          let snackbarshow = <Snackbar text={'Member Successfully Added !'} openSnacker={this.state.snacker} />;
+          let snackbarshow = <Snackbar text={'Post was Successful !'} openSnacker={this.state.snacker} />;
 
           this.setState({snackbarShow:snackbarshow});
 
-      console.log(this.state.snacker)
+          //  console.log(this.state.snacker)
         }
                               
     }).catch(error => {                
@@ -116,7 +124,7 @@ postData = ()=>{
       let helperPhone = '';
 
      if( isNaN(this.state.loan_amount)){ helperLoan_amount = 'Incorrect entry, number required'}
-     if( isNaN(this.state.phone)){ helperPhone = 'Incorrect entry, number required'}
+     if( isNaN(this.state.telephone_number)){ helperPhone = 'Incorrect entry, number required'}
 
       return (  
       <>        
@@ -145,6 +153,7 @@ postData = ()=>{
       <Grid container item xs={12} md={8} lg={7} className="" justifyContent="center">
 
           <form style={{flexGrow:'1',maxWidth:'800px'}}  onSubmit={this.handleSubmit}  autoComplete="off"> 
+
        {/* --------------------------- Referrer's Name ------------------- */}       
         
        <TextField fullWidth 
@@ -152,8 +161,8 @@ postData = ()=>{
           id=""
           label="First Name"    
           variant="outlined"  
-          onChange={(e) => this.setState({fname: e.target.value})}          
-          value={this.state.fname}
+          onChange={(e) => this.setState({first_name: e.target.value})}          
+          value={this.state.first_name}
           required
         />
         <br/><br/>
@@ -165,8 +174,8 @@ postData = ()=>{
           // id=""
           id="outlined-basic"
           label="Last Name"
-          onChange={(e) => this.setState({lname: e.target.value})}          
-          value={this.state.lname}
+          onChange={(e) => this.setState({last_name: e.target.value})}          
+          value={this.state.last_name}
           required
           variant="outlined"    
         /><br/><br/>
@@ -188,7 +197,7 @@ postData = ()=>{
        
          {/* ---------------- Phone # -----------------*/}
 
-        <Phone Phone={this.state.phone} Onchange={ (num)=>this.setState({phone: num}) } />
+        <Phone Phone={this.state.telephone_number} Onchange={ (num)=>this.setState({telephone_number: num}) } />
 
         <br/>
 
@@ -199,8 +208,8 @@ postData = ()=>{
           // id=""
           id="placeOfEmpl"
           label="Place of Employment"
-          onChange={(e) => this.setState({place_of_empl: e.target.value})}          
-          value={this.state.place_of_empl}
+          onChange={(e) => this.setState({place_of_employment: e.target.value})}          
+          value={this.state.place_of_employment}
           required
           variant="outlined"    
         /><br/><br/>          
@@ -230,8 +239,8 @@ postData = ()=>{
           // id="employment"
           select
           label="Employment Status"
-          value={this.state.empl_status}
-          onChange={(e)=>this.setState({empl_status: e.target.value})}
+          value={this.state.employment_status}
+          onChange={(e)=>this.setState({employment_status: e.target.value})}
           helperText="Please Select your Employment Status"
           variant="outlined"
           required
@@ -247,8 +256,7 @@ postData = ()=>{
 
          {/* -------------------- Loan Amount being Barrowed ------------ */}
         
-        <LoanAmount Loan={this.state.loan_amount} Onchange={(amt)=>this.setState({loan_amount:amt})}/>        
-        
+        <LoanAmount Loan={this.state.loan_amount} Onchange={(amt)=>this.setState({loan_amount:amt})}/> 
 
         {/* ----------------------------------------------- */}
 
@@ -266,8 +274,9 @@ postData = ()=>{
         </Grid>
 
       </Grid>
-
-{this.state.snackbarShow}
+     
+      {/* <Snackbar text={'Post was Successful !'} openSnacker={true} /> */}
+      {this.state.snackbarShow} 
           
         </div>}
        </>

@@ -29,7 +29,7 @@ export default function AutoLoan() {
 
 {/* ---------------------------- Form Field ----------------------- */}
 
-<CallBackForm promo_name="auto-loan" />
+<CallBackForm promo_name="Auto Loan" promo_id ="2" />
 
 </div>
   )
