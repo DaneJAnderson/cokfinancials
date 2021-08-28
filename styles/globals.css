@@ -8,8 +8,6 @@ body {
     padding-right: 0px !important;
     padding-left: 0px !important;
     scroll-behavior: smooth;
- 
-   
 }
 
 a {
@@ -49,7 +47,6 @@ a {
 }
 
 .navbar-nav .dropdown-menu {
-
   padding: 10px;
   text-transform: uppercase;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -66,16 +63,13 @@ a {
   display: block; 
   }
   .nav-item.dropdown .dropdown-menu{
-    margin-top: -5px;   
-    
+    margin-top: -5px;       
   }
-
   
   .imgHeight {
     height: 90vh;
     max-width: 1600px;
   }
-
 
 }
 
@@ -83,11 +77,9 @@ a {
 @media screen and (max-width: 768px) {
   .navbar-light .navbar-toggler {
     color: transparent !important;}
-
 }
 
 @media screen and (max-width: 1300px) {
-
   .navbar-collapse {
     margin-right: 5% !important;
   }
@@ -135,4 +127,8 @@ input:-webkit-autofill:active
 
 .MuiSnackbarContent-action .MuiButton-label{
   display: none !important;
+}
+
+h6 a {
+  text-decoration: none ;
 }

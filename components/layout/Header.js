@@ -1,8 +1,8 @@
 
-import React from 'react';
+// import React from 'react';
 import Navbar from 'react-bootstrap/Navbar'
 import {Container, Nav, NavDropdown} from 'react-bootstrap';
-import Link from 'next/link';
+// import Link from 'next/link';
 import { useRouter } from 'next/router';
 
 const Header = () => {
