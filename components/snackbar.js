@@ -1,4 +1,4 @@
-// import React, { useState, useEffect }  from 'react';
+import  { useState }  from 'react';
 import Button from '@material-ui/core/Button';
 import Snackbar from '@material-ui/core/Snackbar';
 import IconButton from '@material-ui/core/IconButton';
@@ -8,9 +8,8 @@ import CloseIcon from '@material-ui/icons/Close';
 SimpleSnackbar.defaultProps = {text: 'Post Failed.',openSnacker:false }
 
 export default function SimpleSnackbar({text,openSnacker}) {
-//   const [open, setOpen] = React.useState(false);
-  // const [open, setOpen] = React.useState(openSnacker);
-//   const [sText, setText] = React.useState(text);
+
+  const [open, setOpen] = useState(openSnacker);
 
   const handleClick = () => {
     setOpen(true);
@@ -32,8 +31,7 @@ export default function SimpleSnackbar({text,openSnacker}) {
           vertical: 'top',
           horizontal: 'center',
         }}
-        // open={open}
-        open={openSnacker}
+        open={open}        
         autoHideDuration={6000}
         onClose={handleClose}
         message={text}        

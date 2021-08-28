@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, createRef } from 'react';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Grid from '@material-ui/core/Grid';
@@ -15,6 +15,12 @@ import axios from 'axios';
 
 
 class CallBackForm extends Component {
+
+  constructor(props) {
+    super(props);
+    this.phoneRef = createRef();
+    // this.onClick = this.onClick.bind(this);
+  }
   
     state = {     
       counter:'',
@@ -56,12 +62,18 @@ handleSubmit(event) {
       employment_status: '',
       place_of_employment:'',
       snacker:false,
-      snackbarShow:'',
-      // showForm:false,  
+      snackbarShow:'',      
       promotion_name: this.props.promo_name,
       promotion_id: this.props.promo_id,   
       
-    } );    
+    } );   
+
+
+    this.phoneRef(''); // Only Accepts Number
+    this.loanAmtRef('');
+
+    console.log(this.phoneRef);
+
   }
 
 //  ------------------ Post Data ------------------- //
@@ -197,7 +209,10 @@ postData = ()=>{
        
          {/* ---------------- Phone # -----------------*/}
 
-        <Phone Phone={this.state.telephone_number} Onchange={ (num)=>this.setState({telephone_number: num}) } />
+        <Phone Phone={this.state.telephone_number} 
+        Onchange={ (num)=>this.setState({telephone_number: num}) } // Receive data from child
+        forwardRef={(v)=>this.phoneRef=v}  // Pass data to child
+        />
 
         <br/>
 
@@ -256,7 +271,9 @@ postData = ()=>{
 
          {/* -------------------- Loan Amount being Barrowed ------------ */}
         
-        <LoanAmount Loan={this.state.loan_amount} Onchange={(amt)=>this.setState({loan_amount:amt})}/> 
+        <LoanAmount Loan={this.state.loan_amount}
+         Onchange={(amt)=>this.setState({loan_amount:amt})}
+         forwardLoanRef={(v)=>this.loanAmtRef=v}/> 
 
         {/* ----------------------------------------------- */}
 

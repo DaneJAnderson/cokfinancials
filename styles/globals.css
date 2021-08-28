@@ -132,3 +132,7 @@ input:-webkit-autofill:active
 .MuiSnackbar-root, .MuiSnackbarContent-root {
   background: green !important;
 }
+
+.MuiSnackbarContent-action .MuiButton-label{
+  display: none !important;
+}

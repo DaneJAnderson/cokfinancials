@@ -33,11 +33,13 @@ NumberFormatCustom.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-export default function LoanAmount({Onchange, Loan}) {
+export default function LoanAmount({Onchange, Loan, forwardLoanRef}) {
 
   const [values, setValues] = useState({  
     numberformat: Loan,
   });
+
+  forwardLoanRef((v)=>setValues({...values,numberformat:v}));
 
   const handleChange = (event) => {
     setValues({

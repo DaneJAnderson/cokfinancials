@@ -21,7 +21,7 @@
   $data->status=1;
 
   echo json_encode($data);
-return json_encode($data);
+  return json_encode($data);
 
   $post->first_name = $data->first_name;
   $post->last_name = $data->last_name;

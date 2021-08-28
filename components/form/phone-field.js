@@ -3,11 +3,10 @@ import NumberFormat from 'react-number-format';
 import TextField from '@material-ui/core/TextField';
 import { useState } from 'react';
 
-
 // Internal Use Function
 function NumberFormatCustom(props) {
   const { inputRef, onChange, ...other } = props;
- 
+  
   return (
     <NumberFormat
       {...other}
@@ -37,13 +36,16 @@ NumberFormatCustom.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-export default function Phone({Onchange, Phone}) {
+export default function Phone({Onchange, Phone, forwardRef}) {
 
   const [values, setValues] = useState({
  
     numberformat: Phone,
   });
 
+  
+  forwardRef((v)=>setValues({...values,numberformat:v}));
+  
   const handleChange = (event) => {
     setValues({
       ...values,
@@ -53,10 +55,11 @@ export default function Phone({Onchange, Phone}) {
     Onchange(event.target.value);
   };
 
+
   return (
     
     <div >
-      <TextField fullWidth
+      <TextField fullWidth     
         label="Telephone #"
         value={values.numberformat}
         onChange={handleChange}

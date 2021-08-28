@@ -32,7 +32,7 @@
         //   $query = 'INSERT INTO ' . $this->table . ' SET title = :title, body = :body, author = :author, category_id = :category_id';
 
           $query = 'INSERT INTO ' . $this->table . ' SET first_name = :first_name, last_name = :last_name,
-           telephone_number = :telephone_number, email = :email, promotion_name = :promotion_name, promotion_id = :promotion_id
+           telephone_number = :telephone_number, email = :email, promotion_name = :promotion_name, promotion_id = :promotion_id,
            place_of_employment = :place_of_employment, parish = :parish, employment_status = :employment_status, loan_amount = :loan_amount';
 
           // Prepare statement
