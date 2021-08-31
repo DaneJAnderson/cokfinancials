@@ -8,7 +8,7 @@ export default function AutoLoan() {
     // <div className={homecss.container}>
 <div >
       <Head>
-        <title>Auto Loan</title>
+        <title>COK | Auto Loan</title>
         <meta name="description" content="COK Auto Loan" />
         <link rel="icon" href="/favicon.ico" />
       </Head>

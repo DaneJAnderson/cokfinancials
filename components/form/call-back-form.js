@@ -6,12 +6,13 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 // import InputAdornment from '@material-ui/core/InputAdornment';
 import Snackbar from '../snackbar';
-import {Forms,SelectWidth, btnColor} from './form.module.css';
+import {Forms,SelectWidth, btnColor,transContact} from './form.module.css';
 import MenuItem from '@material-ui/core/MenuItem';
 import Phone from './phone-field';
 import LoanAmount from './loan-field';
 import LoanLabel from '../loan-label';
 import axios from 'axios';
+import { green } from '@material-ui/core/colors';
 
 
 class CallBackForm extends Component {
@@ -19,6 +20,7 @@ class CallBackForm extends Component {
   constructor(props) {
     super(props);
     this.phoneRef = createRef();
+    this.contactFormRef = createRef();
     // this.onClick = this.onClick.bind(this);
   }
   
@@ -38,6 +40,7 @@ class CallBackForm extends Component {
       showForm:false,      
       promotion_name: this.props.promo_name,
       promotion_id: this.props.promo_id,
+      pos:null,
     }     
 
 componentDidMount() { 
@@ -102,8 +105,10 @@ postData = ()=>{
                    console.log('Post data Error', error)
      })
   }
+  
   scrolling() {
-    if(!this.state.showForm){
+
+   /*  if(!this.state.showForm){
 
     window.scrollTo(0,0);
     setTimeout( () => {
@@ -126,8 +131,53 @@ postData = ()=>{
 
     },100);
 
+  } */
+
+  // var pos = document.querySelector('contactForm').offsetTop;
+  // var pos = document.getElementById('contactForm').offsetTop;
+  setTimeout( () => {
+    // var pos1 = this.contactFormRef.current.offsetTop;
+    
+    // var pos2;
+// console.log('This is POS: ', pos.offsetTop);
+
+// return;
+if(this.contactFormRef.current){
+   this.setState({pos: this.contactFormRef.current.offsetTop})
+  //  pos2=pos1;
+   }
+
+if(this.state.pos){
+  
+  this.scrollToSmoothly(this.state.pos-100, 300);
+  console.log('Pos 2 is: ', this.state.pos);
+}
+
+
+},100);
+
   }
-  }
+
+ scrollToSmoothly = (pos, time) => {
+    var currentPos = window.pageYOffset;
+    var start = null;
+    if(time == null) time = 500;
+    pos = +pos, time = +time;
+    window.requestAnimationFrame(function step(currentTime) {
+        start = !start ? currentTime : start;
+        var progress = currentTime - start;
+        if (currentPos < pos) {
+            window.scrollTo(0, ((pos - currentPos) * progress / time) + currentPos);
+        } else {
+            window.scrollTo(0, currentPos - ((currentPos - pos) * progress / time));
+        }
+        if (progress < time) {
+            window.requestAnimationFrame(step);
+        } else {
+            window.scrollTo(0, pos);
+        }
+    });
+}
   
     render() {      
       
@@ -140,10 +190,10 @@ postData = ()=>{
 
       return (  
       <>        
-        <LoanLabel forms={()=>{this.setState({showForm: !this.state.showForm});this.scrolling()}} /> 
+        <LoanLabel forms={()=>{this.setState({showForm: !this.state.showForm});this.scrolling() }} /> 
 
+        <div style={{background:'green !important'}} className={this.state.showForm?transContact:''+' bg-light'} ref={this.contactFormRef}>
         { this.state.showForm &&
-
       <div style={{flexGrow:1}} className="bg-light" >   
         
       <Grid container  alignItems="center" justifyContent="center" > 
@@ -153,7 +203,7 @@ postData = ()=>{
         <Card className="pt-2">
           <CardContent className={Forms} >
 
-          <div className="text-center">
+          <div  className="text-center">
             <b className="fs-6 text-uppercase" style={{color: 'black', fontFamily: '"Times New Roman", Times, serif'}}>
               Complete the form below to be contacted <br/>
               </b>
@@ -295,7 +345,9 @@ postData = ()=>{
       {/* <Snackbar text={'Post was Successful !'} openSnacker={true} /> */}
       {this.state.snackbarShow} 
           
-        </div>}
+          </div>
+        }
+        </div>
        </>
       );
     }

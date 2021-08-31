@@ -1,3 +1,4 @@
+
 html,
 body {
   padding: 0;
@@ -8,6 +9,8 @@ body {
     padding-right: 0px !important;
     padding-left: 0px !important;
     scroll-behavior: smooth;
+    /* background: #212529 !important; */
+    background: #f8f9fa!important ;
 }
 
 a {
@@ -58,12 +61,28 @@ a {
 
 {
 
+
+  /*   Final State  */
+
   .nav-item.dropdown:hover .dropdown-menu
   {
-  display: block; 
+  /* display: block;  */
+  transition-delay: 0.2s !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  
   }
+
+  /*  Initial State Before Transition  */
   .nav-item.dropdown .dropdown-menu{
-    margin-top: -5px;       
+    margin-top: -5px;    
+    visibility: hidden !important;
+	  transition: all 0s !important; 
+    
+    opacity: 0 !important;
+    transition: 0.2s !important; 
+
+    display: block;
   }
   
   .imgHeight {
@@ -129,6 +148,7 @@ input:-webkit-autofill:active
   display: none !important;
 }
 
-h6 a {
-  text-decoration: none ;
+/* h6 */
+a {
+  text-decoration: none !important;
 }
