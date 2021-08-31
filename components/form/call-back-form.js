@@ -150,7 +150,7 @@ if(this.contactFormRef.current){
 if(this.state.pos){
   
   this.scrollToSmoothly(this.state.pos-100, 300);
-  console.log('Pos 2 is: ', this.state.pos);
+  // console.log('Pos 2 is: ', this.state.pos);
 }
 
 

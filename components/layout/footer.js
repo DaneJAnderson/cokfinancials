@@ -1,17 +1,20 @@
 // import React from 'react';
 import Grid from '@material-ui/core/Grid';
 import Link from 'next/Link';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 import FacebookIcon from '@material-ui/icons/Facebook';
 import TwitterIcon from '@material-ui/icons/Twitter';
 import InstagramIcon from '@material-ui/icons/Instagram';
 import { Fab } from '@material-ui/core';
+import useOnScreen from './viewFooter';
 
 
 const Footer = () => {
 
-  const [screen, setWidth]   = useState();  
+  const [screen, setWidth]   = useState(); 
+  const footerRef = useRef()
+  const isVisible = useOnScreen(footerRef) 
 
   useEffect(()=>{
 
@@ -23,10 +26,13 @@ const Footer = () => {
 
     return (
 <>
+<div >{isVisible && `Yep, I'm on screen`}</div>
 <footer className="bg-dark text-white" style={{marginBottom: '-50px !important' }}>
 
 <Grid container justifyContent="center" item xs={12} >
 <Grid container justifyContent="flex-end" item xs={12} className="p-5 " spacing={10}>
+
+<div ref={footerRef}></div>{/*------- Observed Intersection ------------  */}
 
         <Grid item xs={12} md={4} sm={6} container  justifyContent="center">
           <div className="">
@@ -92,6 +98,7 @@ const Footer = () => {
 </div>
 
 </footer>
+
 </>
     );
 }

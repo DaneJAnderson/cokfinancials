@@ -5,75 +5,19 @@ import {Container, Nav, NavDropdown} from 'react-bootstrap';
 // import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import React, { useEffect, useRef } from "react"
-
-// import { useScrollPosition } from "./useScrollPosition"
-
-
 const Header = () => {
     const router = useRouter();
-    const hideNavRef = useRef(null);
-
-    // --------------------------------------------------//
-
-    // const [sticky, setSticky] = useState(true)
-
-    // useScrollPosition(
-    //   ({ prevPos, currPos }) => {
-    //     const isShow = currPos.y > prevPos.y
-    //     if (isShow !== sticky) setSticky(isShow)
-    //   },
-    //   [sticky]
-    // )
-
-    useEffect(()=>{
-
-
-    var prevScrollpos = window.pageYOffset;
-    window.onscroll = function() {
-    var currentScrollPos = window.pageYOffset;
-    if (prevScrollpos > currentScrollPos) {
-        hideNavRef.current.style.top = "0";
-    } else {
-        hideNavRef.current.style.top = "-100px";
-    }
-      prevScrollpos = currentScrollPos;
-    }
-
-    },[])
-
-
-    // --------------------------------------------------//
-   
 
     const headerRoute = (e,route) => {      
       e.preventDefault();
       // router.push(e.target.value);
       router.push(route);   
     }
-
     
   const base = 'Promotions/';
   // const base = '';
     return ( 
-
-      <div ref={hideNavRef} id="navbar"
-      
-      /* style={{
-        position: "sticky",
-        transform: sticky ? "translateY(0%)" : "translateY(-100%)",
-        transition: "transform 400ms ease-in",
-        bottom: 0,
-        left: 0,        
-        top: 0,
-        zIndex:1020
-      }} */
-    >
-  <Navbar collapseOnSelect bg="light" expand="md" 
-  // sticky="top"  
-  
-
-  >
+  <Navbar collapseOnSelect bg="light" expand="md" sticky="top">
     <Container className="Red" style={{marginTop: '-10px', marginBottom:'-7px'}}>
 
       <Navbar.Brand href="/" >
@@ -107,7 +51,6 @@ const Header = () => {
       </Navbar.Collapse>
     </Container>
   </Navbar>
-  </div>
     );
 }
 export default Header;
