@@ -99,9 +99,9 @@ const Header = () => {
             <NavDropdown.Divider />      
             <NavDropdown.Item onClick={(e)=>headerRoute(e, "mortgage-refinance")}  href="mortgage-refinance">Mortgage Refinance</NavDropdown.Item>
             <NavDropdown.Divider />      
-            <NavDropdown.Item onClick={(e)=>headerRoute(e, "unsecure-loan")}  href="unsecure-loan">Unsecured Loan</NavDropdown.Item>
-            <NavDropdown.Divider />      
-            <NavDropdown.Item onClick={(e)=>headerRoute(e, "deferred-shares")}  href="deferred-shares">Deferred Shares</NavDropdown.Item>
+            <NavDropdown.Item onClick={(e)=>headerRoute(e, "unsecured-loan")}  href="unsecure-loan">Unsecured Loan</NavDropdown.Item>
+            {/* <NavDropdown.Divider />       */}
+            {/* <NavDropdown.Item onClick={(e)=>headerRoute(e, "deferred-shares")}  href="deferred-shares">Deferred Shares</NavDropdown.Item> */}
           </NavDropdown>
         </Nav>
       </Navbar.Collapse>

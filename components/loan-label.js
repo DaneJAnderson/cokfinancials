@@ -1,11 +1,25 @@
 // REQUEST A CALL BACK | APPLY FOR LOAN
 
 import Button from '@material-ui/core/Button';
+import { useState,useRef,useEffect } from 'react';
+import useOnScreen from './layout/viewFooter';
 
 const LoanLabel = ({forms})=>{
 
+const footerRef = useRef()
+const isVisible = useOnScreen(footerRef) 
+const [visible, setVisible]   = useState(true); 
+
+useEffect(()=>{
+
+if(isVisible){setVisible(false)}  // arrow Animate once
+
+
+},[isVisible])
+
 return (
     <div className="p-5 bg-light d-flex justify-content-center ">
+        <div ref={footerRef}>{visible && <div className="arrow"></div>}{/*------- Observed Intersection ------------  */}</div>
 
 <div className="col-xs-12 col-md-5 d-flex justify-content-center">
 <Button 

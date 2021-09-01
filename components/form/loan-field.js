@@ -33,7 +33,7 @@ NumberFormatCustom.propTypes = {
   onChange: PropTypes.func.isRequired,
 };
 
-export default function LoanAmount({Onchange, Loan, forwardLoanRef}) {
+export default function LoanAmount({Onchange, Loan, forwardLoanRef, invest}) {
 
   const [values, setValues] = useState({  
     numberformat: Loan,
@@ -52,7 +52,7 @@ export default function LoanAmount({Onchange, Loan, forwardLoanRef}) {
   return (    
     <div >
       <TextField fullWidth
-        label="Loan Amount $"
+        label={invest?invest:"Loan Amount $"}
         value={values.numberformat}
         onChange={handleChange}
         name="numberformat"

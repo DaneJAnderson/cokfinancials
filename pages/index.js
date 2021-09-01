@@ -16,8 +16,9 @@ export default function Home() {
   });  */ 
   
   return (
+   
       <AutoLoan /> 
-    
+   
   )
 }
 

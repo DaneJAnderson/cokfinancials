@@ -24,12 +24,6 @@ a {
 
 /* --------- Navagation Bootsrap Customization -------- */
 
-/* .dropdown-item:hover, .MuiListItem-button:hover
-{
-  color: rgb(130, 0, 252) !important;
-  background-color: rgb(248, 240, 255) !important;
-} */
-
 /* Active BG */
 .dropdown-menu .active, .dropdown-menu .dropdown-item.active, .dropdown-item:active,
 .dropdown-item:hover, .MuiListItem-button:hover,.MuiListItem-button:active,
@@ -110,7 +104,7 @@ a {
   color: red !important;
 }
 
-
+/* Input Label White and Cut border Line */
 label.MuiFormLabel-root.MuiInputLabel-root.MuiInputLabel-formControl.MuiInputLabel-animated.MuiInputLabel-outlined.Mui-required.Mui-required {
   background: white;
   padding-left: 10px;
@@ -164,4 +158,116 @@ a {
   display: block;
   transition: top 0.6s;
   z-index: 1020;
+}
+
+
+
+
+
+
+@keyframes slideInFromBottom {
+  100% {
+    transform: translateY(0%);
+  }
+  0% {
+    transform: translateY(100%);
+  }
+}
+
+.footerAnimate {  
+
+animation-name: slideInFromBottom;
+/* animation-duration: 0.6s; */
+animation-timing-function: ease-out;
+animation-delay: 0s;
+animation-iteration-count: 1;
+/* animation-direction: reverse;   */
+/* animation-direction: alternate; */
+ 
+}
+
+.footerAnimate1 { animation-duration: 0.6s; }
+.footerAnimate2 { animation-duration: 0.8s; }
+.footerAnimate3 { animation-duration: 1s; }
+
+.socialMargin { margin-right: 20px !important;}
+
+
+.tableScroll{
+  overflow-x: auto !important;
+  scroll-behavior: smooth;
+}
+
+
+
+/* -------- Scroll Down Indicator Animation ------------- */
+@media only screen and (min-width: 1025px)
+  /* ,(min-width: 769px) */
+
+{
+
+.arrow {
+  width: 0;
+  left: 50%;
+  bottom: 50px;
+  position: fixed;
+  margin-left: -40px;
+  border-top: 20px solid rgba(255, 255, 255, 0.8);
+  border-left: 40px solid transparent;
+  border-right: 40px solid transparent;
+  /* animation: indicate 1s linear infinite;  */
+  animation: bounce 1s ease infinite;
+}
+
+.arrow::before {
+  width: 80px;
+  display: block;
+  position: absolute;
+  text-align: center;
+  font: .75em 'Arial';
+
+  bottom: 25px; left: -40px;
+}
+
+/* @keyframes indicate {
+    0% { bottom: 10% }
+  100% { bottom: -10%; opacity: 0 }
+} */
+
+@keyframes bounce {
+  50% {
+    transform: translateY(-100%);
+  }
+}
+
+}
+
+
+
+
+/* ------------ Page Animation ----------- */
+
+@keyframes slideInFromBottom {
+  0% {
+    /* transform: translateX(0%); */
+    transform: scale(0.5);
+  }
+  100% {
+    /* transform: translateX(-100%); */
+    transform: scale(1.0);
+  }
+}
+
+.transPage {  
+  /* This section calls the slideInFromLeft animation we defined above */
+  /* animation: 1s ease-out 0s 1 slideInFromLeft; */
+
+animation-name: slideInFromBottom;
+animation-duration: 0.2s;
+animation-timing-function: ease-out;
+animation-delay: 0s;
+animation-iteration-count: 1;
+/* animation-direction: reverse;   */
+/* animation-direction: alternate; */
+ 
 }

@@ -67,13 +67,16 @@ handleSubmit(event) {
       snacker:false,
       snackbarShow:'',      
       promotion_name: this.props.promo_name,
-      promotion_id: this.props.promo_id,   
+      promotion_id: this.props.promo_id,  
+      showForm: false, 
       
     } );   
 
 
     this.phoneRef(''); // Only Accepts Number
     this.loanAmtRef('');
+
+    // this.setState({showForm: false});
 
     console.log(this.phoneRef);
 
@@ -149,7 +152,7 @@ if(this.contactFormRef.current){
 
 if(this.state.pos){
   
-  this.scrollToSmoothly(this.state.pos-100, 300);
+  this.scrollToSmoothly(this.state.pos, 300);
   // console.log('Pos 2 is: ', this.state.pos);
 }
 
@@ -190,10 +193,10 @@ if(this.state.pos){
 
       return (  
       <>        
-        <LoanLabel forms={()=>{this.setState({showForm: !this.state.showForm});this.scrolling() }} /> 
+        {this.props.invest?'': <LoanLabel forms={()=>{this.setState({showForm: !this.state.showForm});this.scrolling() }} />} 
 
         <div style={{background:'green !important'}} className={this.state.showForm?transContact:''+' bg-light'} ref={this.contactFormRef}>
-        { this.state.showForm &&
+        { (this.state.showForm || this.props.invest) &&
       <div style={{flexGrow:1}} className="bg-light" >   
         
       <Grid container  alignItems="center" justifyContent="center" > 
@@ -323,7 +326,9 @@ if(this.state.pos){
         
         <LoanAmount Loan={this.state.loan_amount}
          Onchange={(amt)=>this.setState({loan_amount:amt})}
-         forwardLoanRef={(v)=>this.loanAmtRef=v}/> 
+         forwardLoanRef={(v)=>this.loanAmtRef=v}
+         invest={this.props.invest}
+         /> 
 
         {/* ----------------------------------------------- */}
 
