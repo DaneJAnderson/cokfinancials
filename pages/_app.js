@@ -17,7 +17,8 @@ export default function MyApp(props) {
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
-    }
+    }  
+
   }, []);
 
   return (

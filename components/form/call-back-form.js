@@ -12,7 +12,7 @@ import Phone from './phone-field';
 import LoanAmount from './loan-field';
 import LoanLabel from '../loan-label';
 import axios from 'axios';
-import { green } from '@material-ui/core/colors';
+// import { green } from '@material-ui/core/colors';
 
 
 class CallBackForm extends Component {
@@ -77,7 +77,7 @@ handleSubmit(event) {
 
     // this.setState({showForm: false});
 
-    console.log(this.phoneRef);
+    // console.log(this.phoneRef);
 
   }
 
@@ -85,14 +85,15 @@ handleSubmit(event) {
 postData = ()=>{  
 
   const host = window.location.hostname;
+  const protocal = window.location.protocol;
 
-    // axios.post('http://'+host+'/APIv1/create.php', this.state)                               
-    axios.post('http://'+host+'/next/cokfinancial/APIv1/create.php', this.state)                               
+  // axios.post(protocal+'//'+host+'/next/cokfinancial/APIv1/create.php', this.state)                               
+    axios.post(protocal+'//'+host+'/APIv1/create.php', this.state)                               
     .then(response => {         
      
         if(response.data.status === 1)
         {           
-          console.log(response.data);
+          // console.log(response.data);
 
           this.setState({snacker:true});
 

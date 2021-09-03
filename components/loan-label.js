@@ -34,7 +34,7 @@ className="text-white p-3"
 <Button 
 className="text-white p-3"
  style={{backgroundImage:  "linear-gradient(to right top, #FF9900, #EB6123, #F9A602)"}}
- href="https://cokcu.com"
+ href="https://cokcu.com/cok-sodality-cooperative-credit-union-ltdapplication-for-loan/"
   >APPLY FOR LOAN</Button>
 </div>
 

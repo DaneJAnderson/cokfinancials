@@ -55,8 +55,6 @@ const Header = () => {
       router.push(route);   
     }
 
-    
-  
     return ( 
 
       <div ref={hideNavRef} id="navbar"
@@ -72,9 +70,7 @@ const Header = () => {
       }} */
     >
   <Navbar collapseOnSelect bg="light" expand="md" 
-  // sticky="top"  
-  
-
+  // sticky="top"
   >
     <Container className="Red" style={{marginTop: '-10px', marginBottom:'-7px'}}>
 
