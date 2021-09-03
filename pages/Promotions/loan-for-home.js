@@ -1,5 +1,6 @@
 import Head from 'next/head'
-import CallBackForm from '../components/form/call-back-form'
+import CallBackForm from '../../components/form/call-back-form'
+
 // import Image from 'next/image'
 
 export default function LoanForHome() {

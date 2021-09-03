@@ -68,8 +68,7 @@ handleSubmit(event) {
       snackbarShow:'',      
       promotion_name: this.props.promo_name,
       promotion_id: this.props.promo_id,  
-      showForm: false, 
-      
+          
     } );   
 
 
@@ -100,6 +99,8 @@ postData = ()=>{
           let snackbarshow = <Snackbar text={'Post was Successful !'} openSnacker={this.state.snacker} />;
 
           this.setState({snackbarShow:snackbarshow});
+
+          // this.setState({showForm: false});
 
           //  console.log(this.state.snacker)
         }

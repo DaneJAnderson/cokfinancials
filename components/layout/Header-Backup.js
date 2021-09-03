@@ -21,7 +21,7 @@ const Header = () => {
     <Container className="Red" style={{marginTop: '-10px', marginBottom:'-7px'}}>
 
       <Navbar.Brand href="/" >
-          <img src="/images/COK_Sodality_Logo.png" width="180px" /> 
+          {/* <img src="/images/COK_Sodality_Logo.png" width="180px" />  */}
       </Navbar.Brand>
       <span style={{flexGrow: 20}}></span>
 

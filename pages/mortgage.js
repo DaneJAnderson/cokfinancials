@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import CallBackForm from '../components/form/call-back-form'
+// import Image from 'next/image'
 
 export default function Mortgage() {
   return (
@@ -10,12 +11,16 @@ export default function Mortgage() {
         <meta name="COK Home Mortgage" content="COK Home Mortgage" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-<div className="d-flex justify-content-center bg-light">
+<div className="d-flex justify-content-center bg-light imgHeight">
+{/* <Image */}
 <img 
-      srcSet="/images/Mortgage-16-99-Percent-2021-Web-Banner.jpg"
-      sizes=""
-      src="/images/Mortgage-16-99-Percent-2021-Web-Banner.jpg"
+      srcSet="/Promotions/images/Mortgage-16-99-Percent-2021-Web-Banner.jpg"
+      // sizes=""
+      src="/Promotions/images/Mortgage-16-99-Percent-2021-Web-Banner.jpg"
+
+      // width="1600" height="1200" 
       width="100%" height="100%" 
+      layout="intrinsic"      
   
       className="imgHeight shadow "
     

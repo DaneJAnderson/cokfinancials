@@ -1,4 +1,4 @@
-import { useRef,useEffect } from 'react'
+/* import { useRef,useEffect } from 'react'
 
 const isBrowser = typeof window !== `undefined`
 
@@ -41,4 +41,4 @@ export function useScrollPosition(effect, deps, element, useWindow, wait) {
 
     return () => window.removeEventListener('scroll', handleScroll)
   }, [deps])
-}
+} */

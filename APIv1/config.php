@@ -5,7 +5,10 @@
     private $db_name = 'cokfinancialservices';
     private $username = 'root';
     private $password = 'newpwd';
+    // private $username = 'cokcumis';    //public site
+    // private $password = 'Cokmis2@19';  // public site
     private $conn;
+
 
     // DB Connect
     public function connect() {

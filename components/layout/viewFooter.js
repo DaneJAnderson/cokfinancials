@@ -14,7 +14,7 @@ export default function useOnScreen(footerRef) {
       observer.observe(footerRef.current)
       // Remove the observer as soon as the component is unmounted
       return () => { observer.disconnect() }
-    }, [])
+    }, [footerRef])
   
     return isIntersecting
   }

@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import CallBackForm from '../components/form/call-back-form'
+// import Image from 'next/image'
 
 export default function UnsecuredLoan() {
   return (
@@ -10,12 +11,16 @@ export default function UnsecuredLoan() {
         <meta name="COK Unsecured Loan" content="COK Unsecured Loan" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-<div className="d-flex justify-content-center bg-light">
+<div className="d-flex justify-content-center bg-light imgHeight">
+{/* <Image */}
 <img 
-      srcSet="/images/COK_Unsecure_Loan_Adv.png"
-      sizes=""
-      src="/images/COK_Unsecure_Loan_Adv.png"
+      srcSet="/Promotions/images/COK_Unsecure_Loan_Adv.png"
+      // sizes=""
+      src="/Promotions/images/COK_Unsecure_Loan_Adv.png"
+      
+      // width="1600" height="1200" 
       width="100%" height="100%" 
+      layout="intrinsic" 
      
       className="imgHeight shadow "
       

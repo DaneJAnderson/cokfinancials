@@ -68,16 +68,16 @@ const Footer = () => {
          
           {/*--------------------------- FaceBook Link ------------------------------*/}
 
-              <a  className="socialMargin" href="https://www.facebook.com/coksodality/" target="_blank">
+              <a  className="socialMargin" href="https://www.facebook.com/coksodality/" target="_blank" rel="noreferrer">
                 <Fab style={{background:"#f1f9ff"}}  size="small"><FacebookIcon fontSize="large" style={{color: '#3030ff'}}/></Fab></a>
      
           {/* ------------------------- Twitter Link ------------------------------ */}
-              <a  className="socialMargin" href="https://twitter.com/cok_sodality" target="_blank">
+              <a  className="socialMargin" href="https://twitter.com/cok_sodality" target="_blank" rel="noreferrer">
                 <Fab style={{background:"#4184ff"}}  size="small"><TwitterIcon style={{color: 'white'}} fontSize="large"/></Fab></a>
 
           {/* ------------------------- Instagram Link ---------------------------- */}
 
-              <a  href="https://www.instagram.com/cok_sodality/" target="_blank">
+              <a  href="https://www.instagram.com/cok_sodality/" target="_blank" rel="noreferrer">
                 <Fab  style={{background: '#dc3545'}}  size="small"><InstagramIcon style={{color: 'white'}} fontSize="large"/></Fab></a>
               </h6>
           <h6></h6>

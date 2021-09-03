@@ -20,8 +20,8 @@
 
   $data->status=1;
 
-  echo json_encode($data); // to be commented
-  return json_encode($data); // to be commented
+ // echo json_encode($data); // to be commented
+ // return json_encode($data); // to be commented
 
   $post->first_name = $data->first_name;
   $post->last_name = $data->last_name;

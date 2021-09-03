@@ -82,6 +82,7 @@ a {
   .imgHeight {
     height: 90vh;
     max-width: 1600px;
+    width: 100%;
   }
 
 }

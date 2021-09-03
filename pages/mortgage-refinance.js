@@ -1,4 +1,5 @@
 import Head from 'next/head'
+// import Image from 'next/image'
 import CallBackForm from '../components/form/call-back-form'
 
 export default function MortgageRefinance() {
@@ -10,12 +11,17 @@ export default function MortgageRefinance() {
         <meta name="COK Mortgage Refinance Loan" content="COK Mortgage Refinance Loan" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-<div className="d-flex justify-content-center bg-light">
+<div className="d-flex justify-content-center bg-light imgHeight">
+
+{/* <Image */}
 <img 
-      srcSet="/images/Mortgage-Refinance-2021-Web-Banner.jpg"
-      sizes=""
-      src="/images/Mortgage-Refinance-2021-Web-Banner.jpg"
+      srcSet="/Promotions/images/Mortgage-Refinance-2021-Web-Banner.jpg"
+      // sizes=""
+      src="/Promotions/images/Mortgage-Refinance-2021-Web-Banner.jpg"
+      
+      // width="1600" height="1200" 
       width="100%" height="100%" 
+      layout="intrinsic" 
       
       className="imgHeight shadow "
      

@@ -1,5 +1,6 @@
 
 // import React from 'react';
+// import Image from 'next/image';
 import Navbar from 'react-bootstrap/Navbar'
 import {Container, Nav, NavDropdown} from 'react-bootstrap';
 // import Link from 'next/link';
@@ -45,6 +46,8 @@ const Header = () => {
 
     // --------------------------------------------------//
    
+    const base = '/Promotions/';
+    // const base = '';
 
     const headerRoute = (e,route) => {      
       e.preventDefault();
@@ -53,8 +56,7 @@ const Header = () => {
     }
 
     
-  const base = 'Promotions/';
-  // const base = '';
+  
     return ( 
 
       <div ref={hideNavRef} id="navbar"
@@ -76,8 +78,12 @@ const Header = () => {
   >
     <Container className="Red" style={{marginTop: '-10px', marginBottom:'-7px'}}>
 
-      <Navbar.Brand href="/" >
-          <img src="/images/COK_Sodality_Logo.png" width="180px" /> 
+      <Navbar.Brand href="/Promotions" >
+          <img src="/Promotions/images/COK_Sodality_Logo.png" width="180px" alt="COK Logo"/> 
+          {/* <div > */}
+          {/* <Image src="/images/COK_Sodality_Logo.png" width="180" height="56" alt="COK Logo" />  */}
+          {/* </div> */}
+
       </Navbar.Brand>
       <span style={{flexGrow: 20}}></span>
 
@@ -89,17 +95,17 @@ const Header = () => {
             </Nav.Link>
           
           <NavDropdown title="PROMOTIONS" id="basic-nav-dropdown" renderMenuOnMount={true} >
-            <NavDropdown.Item onClick={(e)=>headerRoute(e, "auto-loan")}  href={"auto-loan"}>Auto Loan</NavDropdown.Item>  
+            <NavDropdown.Item onClick={(e)=>headerRoute(e, "/auto-loan")}  href="auto-loan">Auto Loan</NavDropdown.Item>  
             <NavDropdown.Divider />       
-            <NavDropdown.Item onClick={(e)=>headerRoute(e, "loan-for-home")}  href="loan-for-home">Loan for Home</NavDropdown.Item>
+            <NavDropdown.Item onClick={(e)=>headerRoute(e, "/loan-for-home")}  href="loan-for-home">Loan for Home</NavDropdown.Item>
             <NavDropdown.Divider />      
-            <NavDropdown.Item onClick={(e)=>headerRoute(e, "home-equity-loan")}  href="home-equity-loan">Home Equity Loan</NavDropdown.Item>
+            <NavDropdown.Item onClick={(e)=>headerRoute(e, "/home-equity-loan")}  href="home-equity-loan">Home Equity Loan</NavDropdown.Item>
             <NavDropdown.Divider />      
-            <NavDropdown.Item onClick={(e)=>headerRoute(e, "mortgage")}  href="mortgage">Mortgage</NavDropdown.Item>
+            <NavDropdown.Item onClick={(e)=>headerRoute(e, "/mortgage")}  href="mortgage">Mortgage</NavDropdown.Item>
             <NavDropdown.Divider />      
-            <NavDropdown.Item onClick={(e)=>headerRoute(e, "mortgage-refinance")}  href="mortgage-refinance">Mortgage Refinance</NavDropdown.Item>
+            <NavDropdown.Item onClick={(e)=>headerRoute(e, "/mortgage-refinance")}  href="mortgage-refinance">Mortgage Refinance</NavDropdown.Item>
             <NavDropdown.Divider />      
-            <NavDropdown.Item onClick={(e)=>headerRoute(e, "unsecured-loan")}  href="unsecure-loan">Unsecured Loan</NavDropdown.Item>
+            <NavDropdown.Item onClick={(e)=>headerRoute(e, "/unsecured-loan")}  href="unsecure-loan">Unsecured Loan</NavDropdown.Item>
             {/* <NavDropdown.Divider />       */}
             {/* <NavDropdown.Item onClick={(e)=>headerRoute(e, "deferred-shares")}  href="deferred-shares">Deferred Shares</NavDropdown.Item> */}
           </NavDropdown>
